@@ -37,10 +37,9 @@ function generateTable() {
     const tbody = table.querySelector('tbody');
 
     // Generate header
-    const featureTh = document.createElement('th');
-    featureTh.textContent = "Feature";
-    featureTh.className = "feature-column";
-    thead.appendChild(featureTh);
+    const emptyTh = document.createElement('th');
+    emptyTh.className = "feature-column";
+    thead.appendChild(emptyTh);
 
     comparisonData.chatbots.forEach(chatbot => {
         const th = document.createElement('th');
@@ -52,20 +51,20 @@ function generateTable() {
     // Generate rows
     comparisonData.categories.forEach(category => {
         const categoryRow = document.createElement('tr');
-        categoryRow.innerHTML = `<td colspan="${comparisonData.chatbots.length + 1}" class="category-name">${category.name}</td>`;
+        categoryRow.innerHTML = `<td colspan="4" class="category-name">${category.name}</td>`;
         tbody.appendChild(categoryRow);
 
         category.items.forEach(item => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td class="feature-name">
+                <td class="feature-column">
                     ${item.name}
                     <div class="description">${item.description}</div>
                 </td>
             `;
 
             comparisonData.chatbots.forEach(() => {
-                row.innerHTML += `<td>-</td>`;  // Placeholder, replace with actual data when available
+                row.innerHTML += `<td class="chatbot-column">-</td>`;  // Placeholder, replace with actual data when available
             });
 
             tbody.appendChild(row);
