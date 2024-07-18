@@ -1,75 +1,86 @@
-const comparisonData = {
-    chatbots: [
-        { name: "ChatGPT" },
-        { name: "Claude" },
-        { name: "Gemini" }
-    ],
-    categories: [
-        {
-            name: "Legal",
-            items: [
-                { name: "Terms of Service (ToS)", description: "Defines the overall legal relationship and rules for using the service." },
-                { name: "Privacy Policy", description: "Explains how user data is collected, used, stored, and protected." },
-                { name: "Usage Policy", description: "Outlines specific rules and guidelines for acceptable use of the service." },
-                { name: "Data Processing Addendum (DPA)", description: "Specifies terms for processing personal data, often required for GDPR compliance." }
-            ]
-        },
-        {
-            name: "Security",
-            items: [
-                { name: "Encryption Methods", description: "Describes techniques used to protect data during storage and transmission." },
-                { name: "Access Control", description: "Details measures to ensure only authorized personnel can access user data." }
-            ]
-        },
-        {
-            name: "User",
-            items: [
-                { name: "Data Controls", description: "Options provided to users for managing their personal data and privacy settings." },
-                { name: "Data Export", description: "Functionality allowing users to download and transfer their personal data." }
-            ]
+const services = ['openai', 'anthropic'];
+
+async function fetchServiceData(service) {
+  const response = await fetch(`services/${service}.json`);
+  return response.json();
+}
+
+async function generateTable() {
+  const table = document.getElementById('comparison-table');
+  const thead = table.querySelector('thead tr');
+  const tbody = table.querySelector('tbody');
+
+  // Fetch all service data
+  const servicesData = await Promise.all(services.map(fetchServiceData));
+
+  // Generate header
+  const emptyTh = document.createElement('th');
+  emptyTh.className = "feature-column";
+  thead.appendChild(emptyTh);
+
+  servicesData.forEach(service => {
+    const th = document.createElement('th');
+    th.innerHTML = `<a href="${service.website}" target="_blank">${service.name}</a>`;
+    th.className = "chatbot-column";
+    thead.appendChild(th);
+  });
+
+  // Generate rows
+  const categories = [
+    { name: "User", items: ["Data Controls", "Data Export"] },
+    { name: "Security", items: ["Trust Center", "Encryption-at-rest", "Encryption-in-transit", "Access Control"] },
+    { name: "Legal", items: ["Terms of Service (ToS)", "Privacy Policy", "Usage Policy", "Other Policies"] }
+  ];
+
+  categories.forEach(category => {
+    const categoryRow = document.createElement('tr');
+    categoryRow.innerHTML = `<td colspan="${services.length + 1}" class="category-name">${category.name}</td>`;
+    tbody.appendChild(categoryRow);
+
+    category.items.forEach(item => {
+      const row = document.createElement('tr');
+      row.innerHTML = `<td class="feature-column">${item}</td>`;
+
+      servicesData.forEach(service => {
+        let content = '-';
+        if (category.name === "Legal" || item === "Trust Center") {
+          const policy = service.policies[item] || service.security[item];
+          if (policy && policy.exists) {
+            if (policy.links) {
+              content = policy.links.map(link => `<a href="${link.url}" target="_blank">${link.name}</a>`).join(', ');
+            } else if (policy.link) {
+              content = `<a href="${policy.link}" target="_blank">link</a>`;
+            }
+          }
+        } else if (category.name === "Security") {
+          const data = service[category.name.toLowerCase()][item];
+          if (data && typeof data === 'object' && data.value && data.link) {
+            content = `<a href="${data.link}" target="_blank">${data.value}</a>`;
+          } else if (data) {
+            content = data;
+          }
+        } else if (category.name === "User") {
+          if (item === "Data Export") {
+            const data = service[category.name.toLowerCase()][item];
+            if (data && data.exists) {
+              content = '✓';
+              if (data.description) {
+                content += `<span class="tooltip">${data.description}</span>`;
+              }
+            }
+          } else {
+            const data = service[category.name.toLowerCase()][item];
+            if (data) {
+              content = data;
+            }
+          }
         }
-    ]
-};
+        row.innerHTML += `<td class="chatbot-column">${content}</td>`;
+      });
 
-function generateTable() {
-    const table = document.getElementById('comparison-table');
-    const thead = table.querySelector('thead tr');
-    const tbody = table.querySelector('tbody');
-
-    // Generate header
-    const emptyTh = document.createElement('th');
-    emptyTh.className = "feature-column";
-    thead.appendChild(emptyTh);
-
-    comparisonData.chatbots.forEach(chatbot => {
-        const th = document.createElement('th');
-        th.textContent = chatbot.name;
-        th.className = "chatbot-column";
-        thead.appendChild(th);
+      tbody.appendChild(row);
     });
-
-    // Generate rows
-    comparisonData.categories.forEach(category => {
-        const categoryRow = document.createElement('tr');
-        categoryRow.innerHTML = `<td colspan="4" class="category-name">${category.name}</td>`;
-        tbody.appendChild(categoryRow);
-
-        category.items.forEach(item => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td class="feature-column">
-                    ${item.name}
-                    <div class="description">${item.description}</div>
-                </td>
-            `;
-
-            comparisonData.chatbots.forEach(() => {
-                row.innerHTML += `<td class="chatbot-column">-</td>`;  // Placeholder, replace with actual data when available
-            });
-
-            tbody.appendChild(row);
-        });
-    });
+  });
 }
 
 document.addEventListener('DOMContentLoaded', generateTable);

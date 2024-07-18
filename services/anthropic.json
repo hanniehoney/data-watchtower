@@ -1,0 +1,46 @@
+{
+  "name": "Anthropic",
+  "website": "https://www.anthropic.com",
+  "policies": {
+    "Terms of Service (ToS)": {
+      "exists": true,
+      "links": [
+        {"name": "Consumer Terms", "url": "https://www.anthropic.com/legal/consumer-terms"},
+        {"name": "Commercial Terms", "url": "https://www.anthropic.com/legal/commercial-terms"}
+      ]
+    },
+    "Privacy Policy": {
+      "exists": true,
+      "link": "https://www.anthropic.com/legal/privacy"
+    },
+    "Usage Policy": {
+      "exists": true,
+      "link": "https://www.anthropic.com/legal/use-policy"
+    },
+    "Other Policies": {
+      "exists": true,
+      "links": [
+        {"name": "Responsible Disclosure Policy", "url": "https://www.anthropic.com/responsible-disclosure-policy"}
+      ]
+    }
+  },
+  "security": {
+    "Trust Center": {
+      "exists": true,
+      "link": "https://trust.anthropic.com/"
+    },
+    "Encryption-at-rest": null,
+    "Encryption-in-transit": null,
+    "Access Control": {
+      "value": "privileged access",
+      "link": "https://trust.anthropic.com/controls#infrastructure-security"
+    }
+  },
+  "user": {
+    "Data Controls": null,
+    "Data Export": {
+      "exists": true,
+      "description": "Data export options are available for enterprise customers."
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "name": "OpenAI",
+  "website": "https://openai.com",
+  "policies": {
+    "Terms of Service (ToS)": {
+      "exists": true,
+      "links": [
+        {"name": "Terms of Use", "url": "https://openai.com/policies/terms-of-use/"},
+        {"name": "Service Terms", "url": "https://openai.com/policies/service-terms/"}
+      ]
+    },
+    "Privacy Policy": {
+      "exists": true,
+      "link": "https://openai.com/policies/privacy-policy"
+    },
+    "Usage Policy": {
+      "exists": true,
+      "link": "https://openai.com/policies/usage-policies"
+    },
+    "Other Policies": {
+      "exists": true,
+      "links": [
+        {"name": "Data Processing Addendum", "url": "https://openai.com/policies/data-processing-addendum/"},
+        {"name": "Business Terms", "url": "https://openai.com/policies/business-terms/"},
+        {"name": "Enterprise Privacy", "url": "https://openai.com/enterprise-privacy/"},
+        {"name": "Coordinated Vulnerability Disclosure Policy", "url": "https://openai.com/policies/coordinated-vulnerability-disclosure-policy/"}
+      ]
+    }
+  },
+  "security": {
+    "Trust Center": {
+      "exists": true,
+      "link": "https://trust.openai.com/"
+    },
+    "Encryption-at-rest": {
+      "value": "AES-256",
+      "link": "https://trust.openai.com/?itemUid=ef061e5b-a2f4-469e-92bc-ab973e3d7842&source=click"
+    },
+    "Encryption-in-transit": {
+      "value": "TLS 1.2",
+      "link": "https://trust.openai.com/?itemUid=4ea65d1e-79fb-47cf-95a8-bdb24d2d6a4b&source=title"
+    },
+    "Access Control": {
+      "value": "Strict access controls, least privilege principle, regular reviews",
+      "link": "https://trust.openai.com/?itemUid=7103fdad-d6ac-45f6-b28d-e71f32884b7f&source=click"
+    }
+  },
+  "user": {
+    "Data Controls": "Users can delete their account and associated data.",
+    "Data Export": {
+      "exists": true,
+      "description": "OpenAI provides data export functionality for business customers."
+    }
+  }
+}
