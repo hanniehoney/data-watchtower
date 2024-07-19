@@ -11,21 +11,6 @@ h1 {
     margin-bottom: 20px;
 }
 
-.github-link {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.github-link a {
-    color: #333;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-.github-link a:hover {
-    text-decoration: underline;
-}
-
 .table-container {
     max-width: 90%;
     margin: 0 auto;
@@ -61,6 +46,7 @@ th a:hover {
     width: 25%;
     font-weight: normal;
     text-align: left;
+    position: relative;
 }
 
 .chatbot-column {
@@ -85,6 +71,16 @@ td a:hover {
     text-decoration: none;
 }
 
+.info-icon {
+    cursor: help;
+    color: #888;
+    font-size: 12px;
+    margin-left: 5px;
+    border: 1px solid #888;
+    border-radius: 50%;
+    padding: 0 4px;
+}
+
 .tooltip {
     visibility: hidden;
     width: 200px;
@@ -102,7 +98,41 @@ td a:hover {
     transition: opacity 0.3s;
 }
 
-.chatbot-column:hover .tooltip {
+.chatbot-column:hover .tooltip,
+.feature-column:hover .info-icon:hover::after {
     visibility: visible;
     opacity: 1;
+}
+
+.info-icon:hover::after {
+    content: attr(title);
+    position: absolute;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 10px;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.github-link {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.github-link a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f2f2f2;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.github-link a:hover {
+    background-color: #ddd;
 }
