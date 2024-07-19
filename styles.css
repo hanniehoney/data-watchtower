@@ -11,6 +11,18 @@ h1 {
     margin-bottom: 20px;
 }
 
+.project-description {
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+    line-height: 1.6;
+    color: #333;
+}
+
+.project-description p {
+    margin-bottom: 15px;
+}
+
 .table-container {
     max-width: 90%;
     margin: 0 auto;

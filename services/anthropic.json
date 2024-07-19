@@ -1,6 +1,40 @@
 {
   "name": "Anthropic",
   "website": "https://www.anthropic.com",
+  "user": {
+    "Data Controls": {
+      "exists": false,
+      "description": null,
+      "link": null
+    },
+    "Data Export": {
+      "exists": true,
+      "description": "Data export options are available for enterprise customers.",
+      "link": null
+    }
+  },
+  "security": {
+    "Trust Center": {
+      "exists": true,
+      "link": "https://trust.anthropic.com/",
+      "description": null
+    },
+    "Encryption-at-rest": {
+      "value": null,
+      "link": null,
+      "description": null
+    },
+    "Encryption-in-transit": {
+      "value": null,
+      "link": null,
+      "description": null
+    },
+    "Access Control": {
+      "value": "privileged access",
+      "link": "https://trust.anthropic.com/controls#infrastructure-security",
+      "description": null
+    }
+  },
   "policies": {
     "Terms of Service (ToS)": {
       "exists": true,
@@ -22,25 +56,6 @@
       "links": [
         {"name": "Responsible Disclosure Policy", "url": "https://www.anthropic.com/responsible-disclosure-policy"}
       ]
-    }
-  },
-  "security": {
-    "Trust Center": {
-      "exists": true,
-      "link": "https://trust.anthropic.com/"
-    },
-    "Encryption-at-rest": null,
-    "Encryption-in-transit": null,
-    "Access Control": {
-      "value": "privileged access",
-      "link": "https://trust.anthropic.com/controls#infrastructure-security"
-    }
-  },
-  "user": {
-    "Data Controls": null,
-    "Data Export": {
-      "exists": true,
-      "description": "Data export options are available for enterprise customers."
     }
   }
 }
