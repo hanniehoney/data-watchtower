@@ -37,8 +37,8 @@ let chatbotData = {};
 async function loadData() {
     try {
         const [openAIResponse, anthropicResponse] = await Promise.all([
-            fetch('/services/openai.json'),
-            fetch('/services/anthropic.json')
+            fetch('/data-watchtower/services/openai.json'),
+            fetch('/data-watchtower/services/anthropic.json')
         ]);
 
         const openAIData = await openAIResponse.json();
