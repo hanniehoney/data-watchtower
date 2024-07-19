@@ -53,4 +53,6 @@ For GitHub Codespaces or GitHub Pages deployment, the project should work out of
 
 ## License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is currently provided without a specific license. All rights are reserved, and usage, modification, or distribution is not permitted without explicit permission.
+
+A license may be added in the future to clarify the terms under which this project can be used and shared.
