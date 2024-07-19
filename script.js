@@ -34,11 +34,24 @@ let comparisonData = {
 
 let chatbotData = {};
 
+// ... (previous code remains unchanged)
+
+function getBasePath() {
+    const path = window.location.pathname;
+    // Check if we're in a GitHub Pages environment
+    if (path.includes('/data-watchtower')) {
+        return '/data-watchtower';
+    }
+    // For local development or Codespace
+    return '';
+}
+
 async function loadData() {
     try {
+        const basePath = getBasePath();
         const [openAIResponse, anthropicResponse] = await Promise.all([
-            fetch('/services/openai.json'),
-            fetch('/services/anthropic.json')
+            fetch(`${basePath}/services/openai.json`).catch(() => fetch('/services/openai.json')),
+            fetch(`${basePath}/services/anthropic.json`).catch(() => fetch('/services/anthropic.json'))
         ]);
 
         const openAIData = await openAIResponse.json();
