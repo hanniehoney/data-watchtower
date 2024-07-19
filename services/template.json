@@ -1,0 +1,56 @@
+{
+    "name": "Company Name",
+    "website": "https://company-website.com",
+    "user": {
+      "Data Controls": {
+        "exists": null,
+        "description": null,
+        "link": null
+      },
+      "Data Export": {
+        "exists": null,
+        "description": null,
+        "link": null
+      }
+    },
+    "security": {
+      "Trust Center": {
+        "exists": null,
+        "link": null,
+        "description": null
+      },
+      "Encryption-at-rest": {
+        "value": null,
+        "link": null,
+        "description": null
+      },
+      "Encryption-in-transit": {
+        "value": null,
+        "link": null,
+        "description": null
+      },
+      "Access Control": {
+        "value": null,
+        "link": null,
+        "description": null
+      }
+    },
+    "policies": {
+      "Terms of Service (ToS)": {
+        "exists": null,
+        "links": []
+      },
+      "Privacy Policy": {
+        "exists": null,
+        "link": null
+      },
+      "Usage Policy": {
+        "exists": null,
+        "link": null
+      },
+      "Other Policies": {
+        "exists": null,
+        "links": []
+      }
+    }
+  }
